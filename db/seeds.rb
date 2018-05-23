@@ -21,3 +21,8 @@
   citizen3 = Citizen.create(:name => "citizen3", :role => "worker")
   citizen4 = Citizen.create(:name => "citizen4", :role => "shopkeeper")
   citizen5 = Citizen.create(:name => "citizen5", :role => "magician")
+
+# Kingdom - Citizens Associations
+  kingdom1.citizens << citizen1
+  kingdom1.citizens << citizen2
+  kingdom2.citizens << citizen4
