@@ -11,6 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     # puts "Main Index Page"
+    session[:error_message] = ""
     erb :index
   end
 
@@ -33,6 +34,7 @@ class ApplicationController < Sinatra::Base
     def redirect_if_not_logged_in
       if !logged_in?
         puts "User Not Logged In"
+        session[:error_message] = "You need to be logged in to do that."
         redirect to "/login"
       end
     end

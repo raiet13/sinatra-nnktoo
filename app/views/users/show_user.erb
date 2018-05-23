@@ -1,11 +1,33 @@
 
-<h1>Show Specific User/Ruler</h1>
+<h3>Show Specific User/Ruler</h3>
+
+<a href="/logout">Log Out</a>
+
+<!-- <h4>User Attributes : <%= @user.attribute_names %> </h4>
+<h4>User Kingdom Attributes : <%= @user.kingdoms.attribute_names %> </h4> -->
+<!-- <h4>User Ids : id = <%= @user.id %> || Session = <%= @session[:user_id] %></h4> -->
+
 
 <!-- Show User Info -->
 
+<% if @user.id == current_user.id %>
+  <h4>Welcome <%= @user.username %>,</h4>
+  <h4>You currently have <%= @user.kingdoms.count %> Kingdoms!</h4>
+  <a href="/kingdoms">Create New Kingdom</a>
+
+<% else %>
+  <h3><%= @user.username %> currently has <%= @user.kingdoms.count %> Kingdoms!</h3>
+
+<% end %>
 
 
 <!-- POTENTIAL : Show User Top 5 Roles of citizens in kingdom(s) -->
 
 
 <!-- Show User Kingdoms -->
+<h4>Current List of Kingdoms</h4>
+<ul>
+  <% @user.kingdoms.each do |kingdom| %>
+    <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+  <% end %>
+</ul>
