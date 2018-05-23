@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     puts "Sign Up Params = #{params}"
     user = User.new(username: params[:username], email: params[:email], password: params[:password])
 		if user.save
-      puts "saved user"
+      puts "Saved user"
       session[:user_id] = user.id
       redirect to "/users/#{user.slug}"
 		else
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     if user && user.authenticate(params[:password])
       # puts "User Successfully logged in"
       session[:user_id] = user.id
-      redirect to "/users/show_user"
+      redirect to "/users/#{user.slug}"
     else
       # puts "FAILURE TO FIND USER"
       redirect to "/login"

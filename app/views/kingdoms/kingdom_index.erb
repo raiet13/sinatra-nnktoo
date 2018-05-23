@@ -1,0 +1,7 @@
+<h1>All Kingdoms Belonging to User</h1>
+
+<ul>
+  <% @kingdoms.each do |kingdom| %>
+    <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+  <% end %>
+</ul>
