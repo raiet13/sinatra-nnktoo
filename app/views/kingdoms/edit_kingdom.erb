@@ -1,1 +1,14 @@
-<h1>Edit Specific Kingdom</h1>
+<h1>Edit/Update Specific Kingdom</h1>
+
+
+<form action="/kingdoms/<%= @kingdom.id %>" method="POST">
+
+  <!-- Edit Kingdom Info -->
+
+  Kingdom Name : <input type="text" id="name" name="name" value="<%= @kingdom.name %>"><br><br>
+
+  <!-- Add/Remove Citizens To/From Kingdom -->
+
+
+  <input type="submit" id="submit" value="Update Kingdom">
+</form>

@@ -5,7 +5,7 @@
 <form action="/users/ <%= @user.slug %> " method="POST">
 
   <!-- Edit User Info -->
-  Username : <input type="text" id="username" name="username" placeholder="<%= @user.username %>"><br>
+  Username : <input type="text" id="username" name="username" value="<%= @user.username %>"><br>
   Password : CURRENTLY NOT ABLE TO BE CHANGED<br>
 
   <input type="submit" id="submit" value="Edit User Info">

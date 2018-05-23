@@ -42,11 +42,30 @@ class KingdomsController < ApplicationController
     erb :'/kingdoms/show_kingdom'
   end
 
-
   # Kingdom Edit Route #
-
+  get '/kingdoms/:id/edit' do
+    # puts "Edit Kingdom Route"
+    @message = session[:error_message]
+    redirect_if_not_logged_in
+    @kingdom = Kingdom.find(params[:id])
+    erb :'/kingdoms/edit_kingdom'
+  end
 
   # Kingdom Edit Action #
+  post '/kingdoms/:id' do
+    # puts "Edit Kingdom Params = #{params}"
+    kingdom = Kingdom.find(params[:id])
+    if !params[:name].empty?
+      # puts "Allow Edit of Kingdom"
+      kingdom.update(name: params[:name])
+      session[:error_message] = ""
+      redirect to "/kingdoms/#{kingdom.slug}"
+    else
+      # puts "Kingdom Edit Error"
+      session[:error_message] = "Something went wrong during kingdom update please try again."
+      redirect to "/kingdoms/#{kingdom.slug}/edit"
+    end
+  end
 
 
   # Kingdom Delete Action #
