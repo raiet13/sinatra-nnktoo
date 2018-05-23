@@ -7,4 +7,6 @@ end
 use Rack::MethodOverride
 
 use UsersController
+use CitizensController
+use KingdomsController
 run ApplicationController
