@@ -1,0 +1,10 @@
+<h1>Create New Citizen</h1>
+
+<h4><%= @message %><h4>
+
+<form action="/citizens" method="POST">
+  Citizen Name : <input type="text" id="name" name="name" placeholder="Name required"><br>
+  Citizen Role : <input type="text" id="role" name="role" placeholder="Role required"><br>
+  <br>
+  <input type="submit" id="submit" value="Create Citizen">
+</form>
