@@ -76,3 +76,5 @@ class KingdomsController < ApplicationController
 
 
 end
+
+# rake db:migrate SINATRA_ENV=test

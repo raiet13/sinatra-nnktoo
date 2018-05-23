@@ -23,6 +23,6 @@ User Ids : Kingdom user_id = <%= @kingdom.user.id %> || User = <%= @kingdom.user
 <h4>Current List of Kingdom's Citizens</h4>
 <ul>
   <% @kingdom.citizens.each do |citizen| %>
-    <li><a href="/citizens/ <%= citizen.id %> "><%= citizen.name %>, <%= citizen.role %></a></li>
+    <li><a href="/citizens/<%= citizen.slug %>"><%= citizen.name %></a>, <%= citizen.role %></li>
   <% end %>
 </ul>
