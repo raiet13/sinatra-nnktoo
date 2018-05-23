@@ -98,6 +98,14 @@ class CitizensController < ApplicationController
   end
 
   # Citizen Delete Action #
+  delete '/citizens/:slug/delete' do
+    # puts "Delete Citizen Action"
+    citizen = Citizen.find_by_slug(params[:slug])
+    if logged_in?
+      citizen.delete
+    end
+    redirect to "/citizens"
+  end
 
 
 end
