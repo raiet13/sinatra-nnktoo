@@ -41,7 +41,6 @@ class CitizensController < ApplicationController
     erb :'/citizens/show_citizen'
   end
 
-
   # Citizen Edit Route #
 
 
