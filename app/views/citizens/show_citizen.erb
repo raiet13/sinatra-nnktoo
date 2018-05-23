@@ -1,0 +1,15 @@
+<h1>Show Specific Citizen</h1>
+
+<h4><%= @message %></h4>
+
+<!-- Show Citizen Info -->
+<p>Citizen Name : <%= @citizen.name %></p>
+<p>Citizen Role : <%= @citizen.role %></p>
+
+<!-- Show Citizen's Associated Kingdoms -->
+<h4>Current List of Kingdoms Citizen is part of</h4>
+<ul>
+  <% @citizen.kingdoms.each do |kingdom| %>
+    <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+  <% end %>
+</ul>
