@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   ## Specific User Views ##
 
   get '/users/:slug' do
-    puts "User Show Route"
+    # puts "User Show Route"
     redirect_if_not_logged_in
     @user = User.find_by_slug(params[:slug])
     @session = session  # << -- NOTE : Currently just for testing purposes
