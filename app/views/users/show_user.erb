@@ -13,8 +13,8 @@
 <% if @user.id == current_user.id %>
   <h4>Welcome <%= @user.username %>,</h4>
   <h4>You currently have <%= @user.kingdoms.count %> Kingdoms!</h4>
+  <!-- <a href="/users/<%= @user.slug %>/edit">Edit User Info</a></br> -->
   <a href="/kingdoms">Create New Kingdom</a>
-
 <% else %>
   <h3><%= @user.username %> currently has <%= @user.kingdoms.count %> Kingdoms!</h3>
 

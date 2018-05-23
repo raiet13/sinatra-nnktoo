@@ -71,29 +71,12 @@ class UsersController < ApplicationController
 
   ## Specific User Views ##
 
-
   get '/users/:slug' do
     puts "User Show Route"
     redirect_if_not_logged_in
     @user = User.find_by_slug(params[:slug])
-    puts "User = #{@user}"
-    @session = session
+    @session = session  # << -- NOTE : Currently just for testing purposes
     erb :'/users/show_user'
-  end
-
-  get '/users/:slug/edit' do
-    puts "User Edit Route"
-    redirect_if_not_logged_in
-    @user = User.find_by_slug(params[:slug])
-    erb :'/users/edit_user'
-  end
-
-  post '/users/:slug' do
-    puts "Edit Params = #{params}"
-    @user = User.find_by_slug(params[:slug])
-    # data = params["landmark"]
-    # @user.update(name: data[:name], year_completed: data[:year_completed])
-    redirect to "/users/#{@user.slug}"
   end
 
 end

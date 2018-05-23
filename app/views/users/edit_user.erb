@@ -5,8 +5,13 @@
 <form action="/users/ <%= @user.slug %> " method="POST">
 
   <!-- Edit User Info -->
-  Username : <input type="text" id="username" name="username" placeholder="Username required"><br>
-  Password : <input type="text" id="password" name="password" placeholder="Password required"><br><br>
+  Username : <input type="text" id="username" name="username" placeholder="<%= @user.username %>"><br>
+  Password : CURRENTLY NOT ABLE TO BE CHANGED<br>
 
   <input type="submit" id="submit" value="Edit User Info">
+</form>
+
+<form action="/users/<%= @user.slug %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete User">
 </form>
