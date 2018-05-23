@@ -11,7 +11,7 @@
   <label>Available Citizens</label>
   <ul>
     <%@citizens.each do |citizen|%>
-      <li><input type="checkbox" name="citizen_ids[]" id="<%=citizen.id%>" value="<%=citizen.id%>"><%='checked' if @kingdom.citizens.include?(citizen) %><%=citizen.name%></input></li>
+      <li><input type="checkbox" name="citizen_ids[]" id="<%=citizen.id%>" value="<%=citizen.id%>" <%='checked' if @kingdom.citizens.include?(citizen) %>><%=citizen.name%></input></li>
     <%end%>
   </ul>
   <br></br>

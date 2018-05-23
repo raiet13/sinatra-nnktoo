@@ -55,7 +55,7 @@ class KingdomsController < ApplicationController
       erb :'/kingdoms/edit_kingdom'
     else
       session[:error_message] = "Kingdoms can only be modified by their ruler."
-      redirect to "/kingdoms/#{kingdom.slug}"
+      redirect to "/kingdoms/#{@kingdom.slug}"
     end
   end
 

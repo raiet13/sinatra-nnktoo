@@ -42,9 +42,45 @@ class CitizensController < ApplicationController
   end
 
   # Citizen Edit Route #
+  get '/citizens/:slug/edit' do
+    # puts "Edit Citizen Route"
+    @message = session[:error_message]
+    redirect_if_not_logged_in
+    @citizen = Citizen.find_by_slug(params[:slug])
+    kingdom_users = @citizen.kingdoms.collect do |kingdom|
+      kingdom.user_id
+    end
 
+    if kingdom_users.include?(current_user.id)
+      session[:error_message] = ""
+      erb :'/citizens/edit_citizen'
+    else
+      session[:error_message] = "Citizens can only be modified by rulers of kingdoms that they are part of."
+      redirect to "/citizens/#{@citizen.slug}"
+    end
+  end
 
   # Citizen Edit Action #
+  post '/citizens/:slug' do
+    # puts "Edit Citizen Params = #{params}"
+    citizen = Citizen.find_by_slug(params[:slug])
+
+    citizen.name = params[:name] if params[:name].empty?
+    # if !params[:name].empty?
+    #   # puts "Allow Edit of Citizen Name"
+    #   citizen.update(name: params[:name])
+    # end
+
+    # # Find Citizens and add to Kingdom's Citizens
+    # kingdom.citizens.clear
+    # if params.has_key?(:citizen_ids) && !params[:citizen_ids].empty?
+    #   params["citizen_ids"].each { |id| kingdom.citizens << Citizen.find(id) }
+    #   # puts "Add citizen : #{kingdom.citizens.count}"
+    # end
+
+    citizen.save
+    redirect to "/citizens/#{citizen.slug}"
+  end
 
 
   # Citizen Delete Action #
