@@ -1,14 +1,21 @@
 <h1>Edit/Update Specific Kingdom</h1>
 
 
-<form action="/kingdoms/<%= @kingdom.id %>" method="POST">
+<form action="/kingdoms/<%= @kingdom.slug %>" method="POST">
 
   <!-- Edit Kingdom Info -->
 
   Kingdom Name : <input type="text" id="name" name="name" value="<%= @kingdom.name %>"><br><br>
 
-  <!-- Add/Remove Citizens To/From Kingdom -->
-
+  <!-- Add/Remove Existing Citizens To/From Kingdom -->
+  <label>Available Citizens</label>
+  <%@citizens.each do |citizen|%>
+    <input type="checkbox" name="citizen_ids[]" value="<%=citizen.id%>" id="citizen_<%=citizen.id%>"><%='checked' if @kingdom.citizen.include?(citizen) %><%=citizen.name%></input>
+  <%end%>
+  <br></br>
 
   <input type="submit" id="submit" value="Update Kingdom">
 </form>
+
+
+<!-- Create New Citizens To Add To Kingdom -->

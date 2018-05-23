@@ -43,28 +43,32 @@ class KingdomsController < ApplicationController
   end
 
   # Kingdom Edit Route #
-  get '/kingdoms/:id/edit' do
+  get '/kingdoms/:slug/edit' do
     # puts "Edit Kingdom Route"
     @message = session[:error_message]
     redirect_if_not_logged_in
-    @kingdom = Kingdom.find(params[:id])
+    @kingdom = Kingdom.find_by_slug(params[:slug])
     erb :'/kingdoms/edit_kingdom'
   end
 
   # Kingdom Edit Action #
-  post '/kingdoms/:id' do
+  post '/kingdoms/:slug' do
     # puts "Edit Kingdom Params = #{params}"
-    kingdom = Kingdom.find(params[:id])
+    kingdom = Kingdom.find_by_slug(params[:slug])
+
     if !params[:name].empty?
-      # puts "Allow Edit of Kingdom"
+      # puts "Allow Edit of Kingdom Name"
       kingdom.update(name: params[:name])
-      session[:error_message] = ""
-      redirect to "/kingdoms/#{kingdom.slug}"
-    else
-      # puts "Kingdom Edit Error"
-      session[:error_message] = "Something went wrong during kingdom update please try again."
-      redirect to "/kingdoms/#{kingdom.slug}/edit"
     end
+
+    # Find Citizens and add to Kingdom's Citizens
+    if params.has_key?(:citizen_ids) && !params[:citizen_ids].empty?
+      params["citizen_ids"].each { |id| kingdom.citizens << Citizen.find(id) }
+      # puts "Add citizen : #{kingdom.citizens.count}"
+    end
+
+    kingdom.save
+    redirect to "/kingdoms/#{kingdom.slug}"
   end
 
 
