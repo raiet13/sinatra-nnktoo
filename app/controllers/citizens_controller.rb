@@ -11,7 +11,7 @@ class CitizensController < ApplicationController
 
   # Citizen New Route #
   get '/citizens/new' do
-    puts "New Citizen Route"
+    # puts "New Citizen Route"
     @message = session[:error_message]
     redirect_if_not_logged_in
     erb :'/citizens/create_citizen'
@@ -19,17 +19,18 @@ class CitizensController < ApplicationController
 
   # Citizen New Action #
   post '/citizens' do
-    puts "New Citizen Params = #{params}"
+    # puts "New Citizen Params = #{params}"
     citizen = Citizen.new(name: params[:name], role: params[:role])
     if citizen.save
-      puts "Save New Citizen"
+      # puts "Save New Citizen"
       session[:error_message] = ""
-      # redirect to "/citizens/#{citizen.slug}"
+      redirect to "/citizens/#{citizen.slug}"
     else
-      puts "FAILURE TO SAVE CITIZEN"
+      # puts "FAILURE TO SAVE CITIZEN"
       session[:error_message] = "Something went wrong during citizen creation please try again."
       redirect to "/citizens/new"
     end
+  end
 
   # Citizen Show Route #
 
