@@ -1,7 +1,9 @@
-<h1>All Kingdoms</h1>
+<h3>List All Kingdoms and Rulers</h3>
+
+<!-- Consider separating in blocks of rulers then kingdoms -->
 
 <ul>
   <% @kingdoms.each do |kingdom| %>
-    <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+    <li>Kingdom : <a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a> || Ruler : <a href="/users/<%= kingdom.user.slug %>"><%= kingdom.user.name %></a></li>
   <% end %>
 </ul>
