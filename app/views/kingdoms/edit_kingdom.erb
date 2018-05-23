@@ -11,7 +11,6 @@
   <label>Available Citizens</label>
   <ul>
     <%@citizens.each do |citizen|%>
-    <!-- NOTE TO SELF : Re the "checked" issue I had with the text, the "<%='checked' and etc." part belongs WITHIN the first input tag -->
       <li><input type="checkbox" name="citizen_ids[]" id="<%=citizen.id%>" value="<%=citizen.id%>" <%='checked' if @kingdom.citizens.include?(citizen) %>><%=citizen.name%></input></li>
     <%end%>
   </ul>

@@ -60,6 +60,7 @@ class CitizensController < ApplicationController
 
     if kingdom_users.include?(current_user.id)
       session[:error_message] = ""
+      @kingdoms = Kingdom.all
       erb :'/citizens/edit_citizen'
     else
       session[:error_message] = "Citizens can only be modified by rulers of kingdoms that they are part of."
@@ -72,20 +73,17 @@ class CitizensController < ApplicationController
     # puts "Edit Citizen Params = #{params}"
     citizen = Citizen.find_by_slug(params[:slug])
 
-    # citizen.name = params[:name] if params[:name].empty?
-    # if !params[:name].empty?
-    #   # puts "Allow Edit of Citizen Name"
-    #   citizen.update(name: params[:name])
-    # end
+    citizen.name = params[:name] if !params[:name].empty?
+    citizen.role = params[:role] if !params[:role].empty?
 
-    # # Find Citizens and add to Kingdom's Citizens
-    # kingdom.citizens.clear
-    # if params.has_key?(:citizen_ids) && !params[:citizen_ids].empty?
-    #   params["citizen_ids"].each { |id| kingdom.citizens << Citizen.find(id) }
-    #   # puts "Add citizen : #{kingdom.citizens.count}"
-    # end
+    # Find Kingdoms and add to Citizen's Kingdoms
+    citizen.kingdoms.clear
+    if params.has_key?(:kingdom_ids) && !params[:kingdom_ids].empty?
+      params["kingdom_ids"].each { |id| citizen.kingdoms << Kingdom.find(id) }
+      # puts "Add Kingdom : #{citizen.kingdoms.count}"
+    end
 
-    # citizen.save
+    citizen.save
     redirect to "/citizens/#{citizen.slug}"
   end
 

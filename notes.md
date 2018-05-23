@@ -21,6 +21,8 @@ Coding Sequence/Method
 - Kingdom Controller + Testing
 - Citizens Controller + Testing
 
+NOTE TO SELF : Re the "checked" issue I had with the text, the "<%='checked' and etc." part belongs WITHIN the first input tag
+
 -------
 Referenced Labs
 

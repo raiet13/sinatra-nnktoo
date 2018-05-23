@@ -1,1 +1,21 @@
 
+<h1>Edit/Update Citizen</h1>
+
+<h4><%= @message %><h4>
+
+<form action="/citizens/<%= @citizen.slug %>" method="POST">
+
+  Citizen Name : <input type="text" id="name" name="name" value="<%= @citizen.name %>"><br>
+  Citizen Role : <input type="text" id="role" name="role" value="<%= @citizen.role %>"><br>
+  <br>
+
+  Change which Existing Kingdom(s) Citizen is part of:
+  <ul>
+    <% @kingdoms.each do |kingdom| %>
+      <li><input type="checkbox" name="kingdom_ids[]" id="<%=kingdom.id%>" value="<%=kingdom.id%>" <%='checked' if @citizen.kingdoms.include?(kingdom) %>><%=kingdom.name%></input></li>
+    <% end %>
+  </ul>
+
+  <br>
+  <input type="submit" id="submit" value="Edit/Update Citizen">
+</form>
