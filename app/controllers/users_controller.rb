@@ -71,6 +71,12 @@ class UsersController < ApplicationController
 
   ## Specific User Views ##
 
+  get '/users/' do
+    redirect_if_not_logged_in
+    @users = User.all
+    erb :'/users/user_index'
+  end
+
   get '/users/:slug' do
     # puts "User Show Route"
     redirect_if_not_logged_in

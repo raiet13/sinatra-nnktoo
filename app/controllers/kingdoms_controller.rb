@@ -38,6 +38,7 @@ class KingdomsController < ApplicationController
     puts "Kingdom Show Route"
     redirect_if_not_logged_in
     @kingdom = Kingdom.find_by_slug(params[:slug])
+    @session = session  # << -- NOTE : Currently just for testing purposes
     erb :'/kingdoms/show_kingdom'
   end
 
