@@ -7,10 +7,11 @@ User Ids : Kingdom user_id = <%= @kingdom.user.id %> || User = <%= @kingdom.user
 <!-- Show Kingdom Info -->
 
 <% if @kingdom.user_id == current_user.id %>
+  <!-- NOTE : IN PROGRESS ->> <h3>Welcome <a href="/users/<%= @kingdom.user.slug %>"><%= @kingdom.user.username %></a>,</h3> -->
   <h3>Welcome <%= @kingdom.user.username %>,</h3>
   <h3><%= @kingdom.name %> currently has <%= @kingdom.citizens.count %> citizens!</h3>
-  <!-- <a href="/kingdoms/<%= @kingdom.slug %>/edit">Edit Kingdom Info</a></br> -->
-  <a href="/kingdoms/ <%= @kingdom.slug %> /edit">Modify Kingdom's Citizens</a>
+  <a href="/kingdoms/<%= @kingdom.slug %>/edit">Modify Kingdom's Citizens</a>
+
 
 <% else %>
   <h3><%= @kingdom.user.username %> currently has <%= @kingdom.citizens.count %> citizens in <%= @kingdom.name %>!</h3>

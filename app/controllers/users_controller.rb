@@ -71,7 +71,8 @@ class UsersController < ApplicationController
 
   ## Specific User Views ##
 
-  get '/users/' do
+  get '/users' do
+    # puts "Show All Users"
     redirect_if_not_logged_in
     @users = User.all
     erb :'/users/user_index'
