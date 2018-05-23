@@ -38,6 +38,7 @@ class KingdomsController < ApplicationController
     # puts "Kingdom Show Route"
     redirect_if_not_logged_in
     @kingdom = Kingdom.find_by_slug(params[:slug])
+    @message = session[:error_message]
     @session = session  # << -- NOTE : Currently just for testing purposes
     erb :'/kingdoms/show_kingdom'
   end
@@ -50,8 +51,10 @@ class KingdomsController < ApplicationController
     @kingdom = Kingdom.find_by_slug(params[:slug])
     @citizens = Citizen.all
     if current_user.id == @kingdom.user.id
+      session[:error_message] = ""
       erb :'/kingdoms/edit_kingdom'
     else
+      session[:error_message] = "Kingdoms can only be modified by their ruler."
       redirect to "/kingdoms/#{kingdom.slug}"
     end
   end
