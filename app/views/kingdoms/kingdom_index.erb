@@ -4,6 +4,6 @@
 
 <ul>
   <% @kingdoms.each do |kingdom| %>
-    <li>Kingdom : <a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a> || Ruler : <a href="/users/<%= kingdom.user.slug %>"><%= kingdom.user.name %></a></li>
+    <li>Kingdom : <a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a> || Ruler : <a href="/users/<%= kingdom.user.slug %>"><%= kingdom.user.username %></a></li>
   <% end %>
 </ul>

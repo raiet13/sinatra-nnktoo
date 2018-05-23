@@ -9,9 +9,16 @@
   Citizen Role : <input type="text" id="role" name="role" value="<%= @citizen.role %>"><br>
   <br>
 
-  Change which Existing Kingdom(s) Citizen is part of:
+  Change which of your existing kingdom(s) this citizen is part of:
+  <% user_kingdoms = [] %>
+  <% @kingdoms.each do |kingdom| %>
+    <% if kingdom.user_id == current_user.id %>
+      <% user_kingdoms << kingdom %>
+    <% end %>
+  <% end %>
+
   <ul>
-    <% @kingdoms.each do |kingdom| %>
+    <% user_kingdoms.each do |kingdom| %>
       <li><input type="checkbox" name="kingdom_ids[]" id="<%=kingdom.id%>" value="<%=kingdom.id%>" <%='checked' if @citizen.kingdoms.include?(kingdom) %>><%=kingdom.name%></input></li>
     <% end %>
   </ul>

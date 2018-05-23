@@ -77,11 +77,21 @@ class CitizensController < ApplicationController
     citizen.role = params[:role] if !params[:role].empty?
 
     # Find Kingdoms and add to Citizen's Kingdoms
+    non_user_kingdoms = []
+    citizen.kingdoms.each do |kingdom|
+      # puts "kingdom user id : #{kingdom.user_id} || user id : #{current_user.id}"
+      if kingdom.user_id != current_user.id
+        # puts "add kingdom : #{kingdom.id}"
+        non_user_kingdoms << kingdom.id
+      end
+    end
+    # puts "Non-user kingdoms = #{non_user_kingdoms}"
     citizen.kingdoms.clear
     if params.has_key?(:kingdom_ids) && !params[:kingdom_ids].empty?
       params["kingdom_ids"].each { |id| citizen.kingdoms << Kingdom.find(id) }
       # puts "Add Kingdom : #{citizen.kingdoms.count}"
     end
+    non_user_kingdoms.each { |id| citizen.kingdoms << Kingdom.find(id) }
 
     citizen.save
     redirect to "/citizens/#{citizen.slug}"
