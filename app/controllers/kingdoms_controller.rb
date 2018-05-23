@@ -73,9 +73,15 @@ class KingdomsController < ApplicationController
     redirect to "/kingdoms/#{kingdom.slug}"
   end
 
-
   # Kingdom Delete Action #
-
+  delete '/kingdoms/:slug/delete' do
+    # puts "Delete Kingdom Action"
+    kingdom = Kingdom.find_by_slug(params[:slug])
+    if logged_in? && kingdom.user.id == current_user.id
+      kingdom.delete
+    end
+    redirect to "/users/#{current_user.slug}"
+  end
 
 end
 
