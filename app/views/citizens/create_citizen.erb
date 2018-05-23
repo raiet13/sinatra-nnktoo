@@ -3,8 +3,18 @@
 <h4><%= @message %><h4>
 
 <form action="/citizens" method="POST">
+  
   Citizen Name : <input type="text" id="name" name="name" placeholder="Name required"><br>
   Citizen Role : <input type="text" id="role" name="role" placeholder="Role required"><br>
+  <br>
+
+  Add Citizen to Existing Kingdom(s):
+  <ul>
+    <% @kingdoms.each do |kingdom| %>
+      <li><input type="checkbox" name="kingdom_ids[]" id="<%=kingdom.id%>" value="<%=kingdom.id%>"><%=kingdom.name%></input></li>
+    <% end %>
+  </ul>
+
   <br>
   <input type="submit" id="submit" value="Create Citizen">
 </form>

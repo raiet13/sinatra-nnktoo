@@ -13,6 +13,7 @@ class CitizensController < ApplicationController
   get '/citizens/new' do
     # puts "New Citizen Route"
     @message = session[:error_message]
+    @kingdoms = Kingdom.all
     redirect_if_not_logged_in
     erb :'/citizens/create_citizen'
   end
@@ -21,6 +22,12 @@ class CitizensController < ApplicationController
   post '/citizens' do
     # puts "New Citizen Params = #{params}"
     citizen = Citizen.new(name: params[:name], role: params[:role])
+
+    if params.has_key?(:kingdom_ids) && !params[:kingdom_ids].empty?
+      params["kingdom_ids"].each { |id| citizen.kingdoms << Kingdom.find(id) }
+      # puts "Add Kingdom : #{citizen.kingdoms.count}"
+    end
+
     if citizen.save
       # puts "Save New Citizen"
       session[:error_message] = ""
@@ -65,7 +72,7 @@ class CitizensController < ApplicationController
     # puts "Edit Citizen Params = #{params}"
     citizen = Citizen.find_by_slug(params[:slug])
 
-    citizen.name = params[:name] if params[:name].empty?
+    # citizen.name = params[:name] if params[:name].empty?
     # if !params[:name].empty?
     #   # puts "Allow Edit of Citizen Name"
     #   citizen.update(name: params[:name])
@@ -78,10 +85,9 @@ class CitizensController < ApplicationController
     #   # puts "Add citizen : #{kingdom.citizens.count}"
     # end
 
-    citizen.save
+    # citizen.save
     redirect to "/citizens/#{citizen.slug}"
   end
-
 
   # Citizen Delete Action #
 
