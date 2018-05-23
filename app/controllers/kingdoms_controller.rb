@@ -48,6 +48,7 @@ class KingdomsController < ApplicationController
     @message = session[:error_message]
     redirect_if_not_logged_in
     @kingdom = Kingdom.find_by_slug(params[:slug])
+    @citizens = Citizen.all
     erb :'/kingdoms/edit_kingdom'
   end
 
@@ -62,6 +63,7 @@ class KingdomsController < ApplicationController
     end
 
     # Find Citizens and add to Kingdom's Citizens
+    kingdom.citizens.clear
     if params.has_key?(:citizen_ids) && !params[:citizen_ids].empty?
       params["citizen_ids"].each { |id| kingdom.citizens << Citizen.find(id) }
       # puts "Add citizen : #{kingdom.citizens.count}"
