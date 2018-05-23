@@ -4,25 +4,25 @@ class UsersController < ApplicationController
   ## Sign Up Views ##
 
   get '/signup' do
-    puts "Get Sign Up Route"
+    # puts "Get Sign Up Route"
     if logged_in?
-      puts "User Already Logged In"
+      # puts "User Already Logged In"
       redirect to "/users/#{current_user.slug}"
     else
-      puts "Allow Sign Up"
+      # puts "Allow Sign Up"
       erb :'/users/create_user'
     end
   end
 
   post '/signup' do
-    puts "Sign Up Params = #{params}"
-    user = User.new(username: params[:username], email: params[:email], password: params[:password])
+    # puts "Sign Up Params = #{params}"
+    user = User.new(username: params[:username], password: params[:password])
 		if user.save
-      puts "Saved user"
+      # puts "Saved user"
       session[:user_id] = user.id
       redirect to "/users/#{user.slug}"
 		else
-      puts "FAILURE TO SAVE USER"
+      # puts "FAILURE TO SAVE USER"
 			redirect to "/signup"
 		end
   end
@@ -56,14 +56,14 @@ class UsersController < ApplicationController
 
   get '/logout' do
     puts "Log Out Route"
-    # redirect_if_not_logged_in
-    # session.clear
-    if logged_in?
+    redirect_if_not_logged_in
+    session.clear
+    # if logged_in?
       puts "Allow Log Out"
-      session.clear
-    else
-      puts "User Not Logged In"
-    end
+    #   session.clear
+    # else
+    #   puts "User Not Logged In"
+    # end
     redirect to "/login"
   end
 

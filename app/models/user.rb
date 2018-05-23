@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_secure_password
-  validates_presence_of :username, :password, :email
+  validates_presence_of :username, :password
   has_many :kingdoms
   has_many :kingdom_citizens, through: :kingdoms
   has_many :citizens, through: :kingdom_citizens

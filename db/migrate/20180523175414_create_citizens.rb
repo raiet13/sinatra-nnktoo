@@ -1,4 +1,4 @@
-class CreateCitizens < ActiveRecord::Migration[5.2]
+class CreateCitizens < ActiveRecord::Migration
   def change
     create_table :citizens do |c|
       c.string :name

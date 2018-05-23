@@ -1,4 +1,4 @@
-class CreateKingdomCitizens < ActiveRecord::Migration[5.2]
+class CreateKingdomCitizens < ActiveRecord::Migration
   def change
     create_table :kingdom_citizens do |kc|
       kc.integer :kingdom_id

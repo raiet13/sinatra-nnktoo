@@ -1,4 +1,4 @@
-class CreateKingdoms < ActiveRecord::Migration[5.2]
+class CreateKingdoms < ActiveRecord::Migration
   def change
     create_table :kingdoms do |k|
       k.string :name
