@@ -1,38 +1,42 @@
 
 class UsersController < ApplicationController
 
+  ## Sign Up Views ##
+
   get '/signup' do
-    # puts "Get Sign Up Route"
+    puts "Get Sign Up Route"
     if logged_in?
-      # puts "User Already Logged In"
-      redirect to "/users/show_user"
+      puts "User Already Logged In"
+      redirect to "/users/#{current_user.slug}"
     else
-      # puts "Allow Sign Up"
+      puts "Allow Sign Up"
       erb :'/users/create_user'
     end
   end
 
   post '/signup' do
-    # puts "Sign Up Params = #{params}"
+    puts "Sign Up Params = #{params}"
     user = User.new(username: params[:username], email: params[:email], password: params[:password])
 		if user.save
-      # puts "saved user -> load tweets page"
+      puts "saved user"
       session[:user_id] = user.id
-      redirect to "/users/show_user"
+      redirect to "/users/#{user.slug}"
 		else
-      # puts "FAILURE TO SAVE USER"
+      puts "FAILURE TO SAVE USER"
 			redirect to "/signup"
 		end
   end
 
 
+  ## Log In Views ##
+
   get '/login' do
-    # puts "Get Login Route"
+    puts "Get Login Route"
     if logged_in?
-      # puts "User Already Logged In"
-      redirect to "/users/show_user"
+      puts "User Already Logged In"
+      redirect to "/users/#{current_user.slug}"
     else
-      # puts "Allow Log In"
+      puts "Allow Log In"
       erb :'/users/login'
     end
   end
@@ -51,17 +55,19 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    # puts "Log Out Route"
+    puts "Log Out Route"
     # redirect_if_not_logged_in
     # session.clear
     if logged_in?
-      # puts "Allow Log Out"
+      puts "Allow Log Out"
       session.clear
-    # else
-    #   puts "User Not Logged In"
+    else
+      puts "User Not Logged In"
     end
-    redirect to "/users/login"
+    redirect to "/login"
   end
+
+  ## Specific User Views ##
 
   get '/users/:slug' do
     puts "User Show Route"
@@ -71,8 +77,3 @@ class UsersController < ApplicationController
   end
 
 end
-
-# rspec spec/controllers/application_controller_spec.rb
-# rspec spec/models/user_spec.rb
-
-# learn --f-f << -- only reports the first spec failure
