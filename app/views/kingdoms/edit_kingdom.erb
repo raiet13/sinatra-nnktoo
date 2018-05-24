@@ -21,11 +21,13 @@
 
   <input type="submit" id="submit" value="Update Kingdom">
 </form>
+<br>
 
 <form action="/kingdoms/<%= @kingdom.slug %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Kingdom">
 </form>
+<br>
 
 <!-- Create New Citizens To Add To Kingdom -->
 <a href="/citizens/new">Create New Citizen</a>

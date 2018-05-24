@@ -27,7 +27,11 @@ User Ids : Kingdom user_id = <%= @kingdom.user.id %> || User = <%= @kingdom.user
 <!-- Show Kingdom's Citizens -->
 <h4>Current List of Kingdom's Citizens</h4>
 <ul>
-  <% @kingdom.citizens.each do |citizen| %>
-    <li><a href="/citizens/<%= citizen.slug %>"><%= citizen.name %></a>, <%= citizen.role %></li>
+  <% if @kingdom.citizens.count > 0 %>
+    <% @kingdom.citizens.each do |citizen| %>
+      <li><a href="/citizens/<%= citizen.slug %>"><%= citizen.name %></a>, <%= citizen.role %></li>
+    <% end %>
+  <% else %>
+    <li>No Citizens Currently!</li>
   <% end %>
 </ul>

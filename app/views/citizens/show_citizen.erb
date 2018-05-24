@@ -25,7 +25,7 @@
 <% kingdom_users = @citizen.kingdoms.collect do |kingdom| %>
 <% kingdom.user_id %>
 <% end %>
-Kingdom Users : <%= kingdom_users %>
+<!-- Kingdom Users : <%= kingdom_users %> -->
 
 <!-- Allow modification of citizen data (if citizen belongs to one of the user/ruler's kingdoms) -->
 <% if kingdom_users.include?(current_user.id) %>

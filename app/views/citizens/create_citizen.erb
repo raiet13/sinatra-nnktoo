@@ -12,9 +12,17 @@
   Citizen Role : <input type="text" id="role" name="role" placeholder="Role required"><br>
   <br>
 
-  Add Citizen to Existing Kingdom(s):
+  <!-- Can only add citizen to user's kingdoms -->
+  <% user_kingdoms = [] %>
+  <% @kingdoms.each do |kingdom| %>
+    <% if kingdom.user_id == current_user.id %>
+      <% user_kingdoms << kingdom %>
+    <% end %>
+  <% end %>
+
+  Add Citizen to Your Existing Kingdom(s):
   <ul>
-    <% @kingdoms.each do |kingdom| %>
+    <% user_kingdoms.each do |kingdom| %>
       <li><input type="checkbox" name="kingdom_ids[]" id="<%=kingdom.id%>" value="<%=kingdom.id%>"><%=kingdom.name%></input></li>
     <% end %>
   </ul>

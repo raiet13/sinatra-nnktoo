@@ -30,15 +30,23 @@
 <!-- Show User Kingdoms -->
 <h4>Current List of Kingdoms</h4>
 <ul>
-  <% @user.kingdoms.each do |kingdom| %>
-    <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+  <% if @user.kingdoms.count > 0 %>
+    <% @user.kingdoms.each do |kingdom| %>
+      <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+    <% end %>
+  <% else %>
+    <li>No Kingdoms Currently!</li>
   <% end %>
 </ul>
 
 <!-- Show User Outfits -->
 <h4>Current List of Outfits</h4>
 <ul>
-  <% @user.outfits.each do |outfit| %>
-    <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a>, <%= outfit.outfit_type %></a></li>
+  <% if @user.outfits.count > 0 %>
+    <% @user.outfits.each do |outfit| %>
+      <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a>, <%= outfit.outfit_type %></a></li>
+    <% end %>
+  <% else %>
+    <li>No Outfits Currently!</li>
   <% end %>
 </ul>
