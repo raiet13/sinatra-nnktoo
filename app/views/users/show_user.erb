@@ -34,7 +34,7 @@
 <ul>
   <% if @user.outfits.count > 0 %>
     <% @user.outfits.each do |outfit| %>
-      <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a>, <%= outfit.outfit_type %></a></li>
+      <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a>, <%= outfit.outfit_style %></a></li>
     <% end %>
   <% else %>
     <li>No Outfits Currently!</li>

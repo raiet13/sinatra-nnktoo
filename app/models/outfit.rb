@@ -1,6 +1,6 @@
 class Outfit < ActiveRecord::Base
 
-  validates_presence_of :name, :outfit_type
+  validates_presence_of :name, :outfit_style
   belongs_to :user
 
   def slug

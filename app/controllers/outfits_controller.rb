@@ -16,7 +16,7 @@ class OutfitsController < ApplicationController
 
   # Outfit New Action #
   post '/outfits' do
-    outfit = Outfit.new(name: params[:name], outfit_type: params[:outfit_type], user_id: current_user.id)
+    outfit = Outfit.new(name: params[:name], outfit_style: params[:outfit_style], user_id: current_user.id)
 
     if outfit.save
       session[:error_message] = ""
@@ -54,7 +54,7 @@ class OutfitsController < ApplicationController
   post '/outfits/:slug' do
     outfit = Outfit.find_by_slug(params[:slug])
     outfit.name = params[:name] if !params[:name].empty?
-    outfit.outfit_type = params[:outfit_type] if !params[:outfit_type].empty?
+    outfit.outfit_style = params[:outfit_style] if !params[:outfit_style].empty?
 
     outfit.save
     redirect to "/outfits/#{outfit.slug}"
