@@ -1,7 +1,11 @@
-<h3>List All Citizens and Their Kingdoms</h3>
 
-Citizen Attributes : <%= @citizens.attribute_names %><br>
-Citizen Kingdom Attributes : <%= @citizens.first.kingdoms.attribute_names %>
+<a href="/logout">Log Out</a><br>
+<a href="/users/<%=current_user.slug%>">Go to User Page</a>
+
+<h2>List All Citizens and Their Kingdoms</h2>
+
+<!-- Citizen Attributes : <%= @citizens.attribute_names %><br>
+Citizen Kingdom Attributes : <%= @citizens.first.kingdoms.attribute_names %> -->
 
 <ul>
   <% @citizens.each do |citizen| %>

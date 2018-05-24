@@ -1,4 +1,8 @@
-<h3>List All Users/Rulers</h3>
+
+<a href="/logout">Log Out</a><br>
+<a href="/users/<%=current_user.slug%>">Go to User Page</a>
+
+<h2>List All Users/Rulers</h2>
 
 <ul>
   <% @users.each do |user| %>

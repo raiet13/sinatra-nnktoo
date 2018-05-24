@@ -1,3 +1,7 @@
+
+<a href="/logout">Log Out</a><br>
+<a href="/users/<%=current_user.slug%>">Go to User Page</a>
+
 <h1>Show Specific Citizen</h1>
 
 <h4><%= @message %></h4>
@@ -13,6 +17,7 @@
     <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
   <% end %>
 </ul>
+<br>
 
 
 <!-- Link to Citizen's Edit Page -->
