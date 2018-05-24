@@ -11,6 +11,7 @@ class PLURALnameController < ApplicationController
   # New Route #
   get '/name/new' do
     # Check logged in or redirect to log in page
+    # Show error message if necessary
     # Show creation view for controller object
   end
 
@@ -24,12 +25,20 @@ class PLURALnameController < ApplicationController
 
   # Show Route #
   get '/name/:param' do
+    # Show error message if necessary
 
   end
 
   # Edit Route #
+  get '/name/:param/edit' do
+    # Show error message if necessary
+
+  end
 
   # Edit Action #
+  post '/name/:param' do
+    
+  end
 
   # Delete Action #
 

@@ -42,8 +42,31 @@ class OutfitsController < ApplicationController
   end
 
   # Outfit Edit Route #
+  get '/outfits/:slug/edit' do
+    # puts "Edit Outfit Route"
+    @message = session[:error_message]
+    redirect_if_not_logged_in
+    @outfit = Outfit.find_by_slug(params[:slug])
+
+    if @outfit.user_id == current_user.id
+      session[:error_message] = ""
+      erb :'/outfits/edit_outfit'
+    else
+      session[:error_message] = "Outfits can only be modified by their Owners."
+      redirect to "/outfits/#{@outfit.slug}"
+    end
+  end
 
   # Outfit Edit Action #
+  post '/outfits/:slug' do
+    # puts "Edit Outfit Params = #{params}"
+    outfit = Outfit.find_by_slug(params[:slug])
+    outfit.name = params[:name] if !params[:name].empty?
+    outfit.outfit_type = params[:outfit_type] if !params[:outfit_type].empty?
+
+    outfit.save
+    redirect to "/outfits/#{outfit.slug}"
+  end
 
   # Outfit Delete Action #
 

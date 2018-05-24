@@ -1,4 +1,11 @@
 <a href="/logout">Log Out</a><br>
 <a href="/users/<%=current_user.slug%>">Go to User Page</a>
 
-<h1>Edit Specific Outfit</h1>
+<h1>Edit/Update Specific Outfit</h1>
+
+<form action="/outfits/<%= @outfit.slug %>" method="POST">
+  Outfit Name : <input type="text" id="name" name="name" value="<%= @outfit.name %>"><br>
+  Outfit Type : <input type="text" id="outfit_type" name="outfit_type" value="<%= @outfit.outfit_type %>"><br>
+  <br>
+  <input type="submit" id="submit" value="Edit/Update Outfit">
+</form>
