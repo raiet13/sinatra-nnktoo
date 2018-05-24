@@ -24,8 +24,7 @@ class OutfitsController < ApplicationController
     if outfit.save
       # puts "Save New Outfit"
       session[:error_message] = ""
-      # redirect to "/outfits/#{outfit.slug}"
-      redirect to "/outfits"
+      redirect to "/outfits/#{outfit.slug}"
     else
       # puts "FAILURE TO SAVE Outfit"
       session[:error_message] = "Something went wrong during outfit creation please try again."
@@ -34,6 +33,13 @@ class OutfitsController < ApplicationController
   end
 
   # Outfit Show Route #
+  get '/outfits/:slug' do
+    # puts "Outfit Show Route"
+    redirect_if_not_logged_in
+    @outfit = Outfit.find_by_slug(params[:slug])
+    @message = session[:error_message]
+    erb :'/outfits/show_outfit'
+  end
 
   # Outfit Edit Route #
 

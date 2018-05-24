@@ -41,7 +41,7 @@ class CitizensController < ApplicationController
 
   # Citizen Show Route #
   get '/citizens/:slug' do
-    puts "Citizen Show Route"
+    # puts "Citizen Show Route"
     redirect_if_not_logged_in
     @citizen = Citizen.find_by_slug(params[:slug])
     @message = session[:error_message]

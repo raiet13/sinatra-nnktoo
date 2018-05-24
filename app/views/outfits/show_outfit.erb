@@ -3,3 +3,20 @@
 <a href="/users/<%=current_user.slug%>">Go to User Page</a>
 
 <h1>Show Specific Outfit</h1>
+
+<!-- Outfit Attributes : <%= @outfit.attribute_names %><br> -->
+
+<h4><%= @message %><h4>
+
+<!-- Show Outfit Info -->
+
+<h3>Outfit Current Owner : <a href="/users/<%= @outfit.user.slug %>"><%= @outfit.user.username %></a></h3>
+<h3>Outfit Name : <%= @outfit.name %></h3>
+<h3>Outfit Type : <%= @outfit.outfit_type %></h3>
+
+
+<!-- Only Allow Owner to Modify -->
+
+<% if @outfit.user_id == current_user.id %>
+  <a href="/outfits/<%= @outfit.slug %>/edit">Modify Outfit</a>
+<% end %>

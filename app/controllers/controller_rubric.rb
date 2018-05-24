@@ -23,6 +23,9 @@ class PLURALnameController < ApplicationController
   end
 
   # Show Route #
+  get '/name/:param' do
+
+  end
 
   # Edit Route #
 
