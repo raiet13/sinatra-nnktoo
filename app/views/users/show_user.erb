@@ -39,6 +39,6 @@
 <h4>Current List of Outfits</h4>
 <ul>
   <% @user.outfits.each do |outfit| %>
-    <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a></li>
+    <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a>, <%= outfit.outfit_type %></a></li>
   <% end %>
 </ul>

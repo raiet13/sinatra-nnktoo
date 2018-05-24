@@ -24,7 +24,8 @@ class OutfitsController < ApplicationController
     if outfit.save
       # puts "Save New Outfit"
       session[:error_message] = ""
-      redirect to "/outfits/#{outfit.slug}"
+      # redirect to "/outfits/#{outfit.slug}"
+      redirect to "/outfits"
     else
       # puts "FAILURE TO SAVE Outfit"
       session[:error_message] = "Something went wrong during outfit creation please try again."
