@@ -6,7 +6,7 @@ In this project, users (or rulers) are able to create kingdoms with citizens. Ru
 
 # Usage
 
-To use this app, just clone, run rake db:migrate and then run shotgun. Everything should be set up.
+To use this app, just clone, run "bundle install", and then run "shotgun". Everything should be set up.
 
 ## Contributing
 
