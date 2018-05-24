@@ -30,11 +30,11 @@
   kingdom2.citizens << citizen4
 
 # Outfits
-  outfit1 = Outfit.create(:name => "outfit1", :type => "shirt")
-  outfit2 = Outfit.create(:name => "outfit2", :type => "pants")
-  outfit3 = Outfit.create(:name => "outfit3", :type => "shoes")
-  outfit4 = Outfit.create(:name => "outfit4", :type => "shirt")
-  outfit5 = Outfit.create(:name => "outfit5", :type => "armor")
+  outfit1 = Outfit.create(:name => "outfit1", :outfit_type => "shirt")
+  outfit2 = Outfit.create(:name => "outfit2", :outfit_type => "pants")
+  outfit3 = Outfit.create(:name => "outfit3", :outfit_type => "shoes")
+  outfit4 = Outfit.create(:name => "outfit4", :outfit_type => "shirt")
+  outfit5 = Outfit.create(:name => "outfit5", :outfit_type => "armor")
 
 # User - Outfit Associations
   user1.outfits << outfit1

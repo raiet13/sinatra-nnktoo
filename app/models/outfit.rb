@@ -1,10 +1,10 @@
 class Outfit < ActiveRecord::Base
 
-  validates_presence_of :name, :type
+  validates_presence_of :name, :outfit_type
   belongs_to :user
 
   def slug
-    self.username.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+    self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   end
 
   def self.find_by_slug(slug)
