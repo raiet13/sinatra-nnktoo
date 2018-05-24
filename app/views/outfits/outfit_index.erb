@@ -2,3 +2,11 @@
 <a href="/users/<%=current_user.slug%>">Go to User Page</a>
 
 <h2>Show All Outfits and Their Owners</h2>
+
+<!-- Consider separating in blocks of owners then outfits -->
+
+<ul>
+  <% @outfits.each do |outfit| %>
+    <li>Outfit : <a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a> || Owner : <a href="/users/<%= outfit.user.slug %>"><%= outfit.user.username %></a></li>
+  <% end %>
+</ul>

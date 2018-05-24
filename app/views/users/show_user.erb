@@ -1,5 +1,6 @@
 
-<a href="/logout">Log Out</a>
+<a href="/logout">Log Out</a><br>
+<a href="/users/<%=current_user.slug%>">Go to User Page</a>
 
 <h1>Show Specific User/Ruler</h1>
 
@@ -15,6 +16,8 @@
   <h4>You currently have <%= @user.kingdoms.count %> Kingdom(s)!</h4>
   <!-- <a href="/users/<%= @user.slug %>/edit">Edit User Info</a></br> -->
   <a href="/kingdoms/new">Create New Kingdom</a>
+  OR
+  <a href="/outfits/new">Create New Outfit</a>
 <% else %>
   <h3><%= @user.username %> currently has <%= @user.kingdoms.count %> Kingdom(s)!</h3>
 
@@ -29,5 +32,13 @@
 <ul>
   <% @user.kingdoms.each do |kingdom| %>
     <li><a href="/kingdoms/<%= kingdom.slug %>"><%= kingdom.name %></a></li>
+  <% end %>
+</ul>
+
+<!-- Show User Outfits -->
+<h4>Current List of Outfits</h4>
+<ul>
+  <% @user.outfits.each do |outfit| %>
+    <li><a href="/outfits/<%= outfit.slug %>"><%= outfit.name %></a></li>
   <% end %>
 </ul>
