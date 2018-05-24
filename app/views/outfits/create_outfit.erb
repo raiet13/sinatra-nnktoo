@@ -2,3 +2,12 @@
 <a href="/users/<%=current_user.slug%>">Go to User Page</a>
 
 <h1>Create New Outfit</h1>
+
+<h4><%= @message %><h4>
+
+<form action="/outfits" method="POST">
+  Outfit Name : <input type="text" id="name" name="name" placeholder="Name required"><br>
+  Outfit Type : <input type="text" id="outfit_type" name="outfit_type" placeholder="ie. pants, shirt, armor, etc."><br>
+  <br>
+  <input type="submit" id="submit" value="Create Outfit">
+</form>
