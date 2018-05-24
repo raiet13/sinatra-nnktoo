@@ -9,8 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "evermore"
   end
 
+  # Main Index Page #
   get '/' do
-    # puts "Main Index Page"
     session[:error_message] = ""
     erb :index
   end
@@ -20,12 +20,10 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      # puts "Check if Logged in"
       !!session[:user_id]
     end
 
     def current_user
-      # puts "Find Current User"
       if logged_in?
         User.find(session[:user_id])
       end
@@ -33,7 +31,6 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_not_logged_in
       if !logged_in?
-        puts "User Not Logged In"
         session[:error_message] = "You need to be logged in to do that."
         redirect to "/login"
       end
@@ -42,7 +39,3 @@ class ApplicationController < Sinatra::Base
   end
 
 end
-
-# Referenced Labs
-# nyc-sinatra-v-000 || playlister-sinatra-v-000 || sinatra-complex-forms-associations-v-000
-# sinatra-secure-password-lab-v-000 || sinatra-user-auth-v-000

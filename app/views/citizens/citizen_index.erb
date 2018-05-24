@@ -4,9 +4,6 @@
 
 <h2>List All Citizens and Their Kingdoms</h2>
 
-<!-- Citizen Attributes : <%= @citizens.attribute_names %><br>
-Citizen Kingdom Attributes : <%= @citizens.first.kingdoms.attribute_names %> -->
-
 <ul>
   <% @citizens.each do |citizen| %>
     <li> Citizen : <a href="/citizens/<%= citizen.slug %>"><%= citizen.name %></a>, <%= citizen.role %>

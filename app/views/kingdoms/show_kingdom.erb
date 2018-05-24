@@ -4,16 +4,11 @@
 
 <h1>Show Specific Kingdom</h1>
 
-<!-- Kingdom Attributes : <%= @kingdom.attribute_names %><br>
-Kingdom Citizen Attributes : <%= @kingdom.citizens.attribute_names %><br>
-User Ids : Kingdom user_id = <%= @kingdom.user.id %> || User = <%= @kingdom.user_id %> || Session = <%= @session[:user_id] %> -->
-
 <h4><%= @message %><h4>
 
 <!-- Show Kingdom Info -->
 
 <% if @kingdom.user_id == current_user.id %>
-  <!-- NOTE : IN PROGRESS ->> <h3>Welcome <a href="/users/<%= @kingdom.user.slug %>"><%= @kingdom.user.username %></a>,</h3> -->
   <h3>Welcome <a href="/users/<%= @kingdom.user.slug %>"><%= @kingdom.user.username %></a>,</h3>
   <h3><%= @kingdom.name %> currently has <%= @kingdom.citizens.count %> citizens!</h3>
   <a href="/kingdoms/<%= @kingdom.slug %>/edit">Modify Kingdom and it's Citizens</a>
