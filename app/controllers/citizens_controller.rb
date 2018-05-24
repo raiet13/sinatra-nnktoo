@@ -104,7 +104,7 @@ class CitizensController < ApplicationController
     if logged_in?
       citizen.delete
     end
-    redirect to "/citizens"
+    redirect to "/users/#{current_user.slug}"
   end
 
 

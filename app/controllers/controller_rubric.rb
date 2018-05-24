@@ -37,10 +37,13 @@ class PLURALnameController < ApplicationController
 
   # Edit Action #
   post '/name/:param' do
-    
+
   end
 
   # Delete Action #
+  delete '/outfits/:slug/delete' do
+
+  end
 
 
 end

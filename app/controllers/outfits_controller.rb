@@ -69,7 +69,14 @@ class OutfitsController < ApplicationController
   end
 
   # Outfit Delete Action #
-
+  delete '/outfits/:slug/delete' do
+    # puts "Delete Outfit Action"
+    outfit = Outfit.find_by_slug(params[:slug])
+    if logged_in?
+      outfit.delete
+    end
+    redirect to "/users/#{current_user.slug}"
+  end
 
 end
 
