@@ -9,4 +9,5 @@ use Rack::MethodOverride
 use UsersController
 use CitizensController
 use KingdomsController
+use OutfitsController
 run ApplicationController

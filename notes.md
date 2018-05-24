@@ -1,6 +1,6 @@
 Notes for Project Requirements
 
-Github : TBD
+Github : https://github.com/raiet13/sinatra-nnktoo
 Blog Post : TBD
 Walkthrough : TBD
 

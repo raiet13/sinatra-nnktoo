@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :kingdoms
   has_many :kingdom_citizens, through: :kingdoms
   has_many :citizens, through: :kingdom_citizens
+  has_many :outfits
 
   def slug
     self.username.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')

@@ -21,8 +21,24 @@
   citizen3 = Citizen.create(:name => "citizen3", :role => "worker")
   citizen4 = Citizen.create(:name => "citizen4", :role => "shopkeeper")
   citizen5 = Citizen.create(:name => "citizen5", :role => "magician")
+  citizen6 = Citizen.create(:name => "citizen6", :role => "woodcutter")
+  citizen7 = Citizen.create(:name => "citizen7", :role => "blacksmith")
 
 # Kingdom - Citizens Associations
   kingdom1.citizens << citizen1
   kingdom1.citizens << citizen2
   kingdom2.citizens << citizen4
+
+# Outfits
+  outfit1 = Outfit.create(:name => "outfit1", :type => "shirt")
+  outfit2 = Outfit.create(:name => "outfit2", :type => "pants")
+  outfit3 = Outfit.create(:name => "outfit3", :type => "shoes")
+  outfit4 = Outfit.create(:name => "outfit4", :type => "shirt")
+  outfit5 = Outfit.create(:name => "outfit5", :type => "armor")
+
+# User - Outfit Associations
+  user1.outfits << outfit1
+  user1.outfits << outfit2
+  user1.outfits << outfit3
+  user2.outfits << outfit4
+  user5.outfits << outfit5
