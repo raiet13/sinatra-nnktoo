@@ -23,9 +23,14 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
+    # NOTE : Use variable to keep user information rather than make a call to the database each time the method is run
     def current_user
-      if logged_in?
-        User.find(session[:user_id])
+      if @user
+        return @user
+      else
+        if logged_in?
+          @user = User.find(session[:user_id])
+        end
       end
     end
 

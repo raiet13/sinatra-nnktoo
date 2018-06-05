@@ -52,7 +52,7 @@ class CitizensController < ApplicationController
 
     if kingdom_users.include?(current_user.id)
       session[:error_message] = ""
-      @kingdoms = Kingdom.all
+      # @kingdoms = Kingdom.all
       erb :'/citizens/edit_citizen'
     else
       session[:error_message] = "Citizens can only be modified by rulers of kingdoms that they are part of."
